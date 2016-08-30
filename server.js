@@ -1,11 +1,13 @@
-var apiKey = "9c22dd0ce6d56d744e8b6128f555cb61";
-var url = "http://api.openweathermap.org";
-var data = "/data/2.5/weather?q=London,uk&appid=";
+var config = require('./config');
 
-var request = require('request-json');
-var client = request.createClient(url);
+var connection = new config({
+	apiKey : "9c22dd0ce6d56d744e8b6128f555cb61",
+	url    : 'http://api.openweathermap.org',
+	data   : '/data/2.5/weather?q=London,uk&appid='
+});
 
-client.get(data + apiKey, function(err, res, body) {
-  return console.log(body, res, err);
+connection.get('Dhaka', function( data , error )
+{
+	console.log(data, "Datas", error);
 });
 
